@@ -1,10 +1,15 @@
 from display import *
 from matrix import *
-
+import math
 
 def add_circle( points, cx, cy, cz, r, step ):
-    pass
-
+    for t in range(0,1,step):
+        x = cx + r*math.cos(2*math.pi*t)
+        y = cy + r*math.sin(2*math.pi*t)
+        add_point(points,x,y)
+        if t > 0:
+            add_point(points,x,y)
+    add_point(
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
     pass
 
