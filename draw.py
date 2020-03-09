@@ -3,15 +3,21 @@ from matrix import *
 import math
 
 def add_circle( points, cx, cy, cz, r, step ):
-    for t in range(0,1,step):
+    init_x = cx+r
+    init_y = cy
+    add_point(points,init_x, init_y)
+    t = step
+    while t <= 1:
         x = cx + r*math.cos(2*math.pi*t)
         y = cy + r*math.sin(2*math.pi*t)
+        # the end of the line is also the start of the next line, so add point twice
         add_point(points,x,y)
-        if t > 0:
-            add_point(points,x,y)
-    add_point(
+        add_point(points,x,y)
+        t+=step
+    add_point(points,init_x, init_y)
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
     pass
+        
 
 
 def draw_lines( matrix, screen, color ):
