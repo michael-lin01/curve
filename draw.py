@@ -15,10 +15,20 @@ def add_circle( points, cx, cy, cz, r, step ):
         add_point(points,x,y)
         t+=step
     add_point(points,init_x, init_y)
-def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
-    pass
-        
 
+def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
+    if curve_type == 'bezier':
+        ax = -1*x0 + 3*x1 - 3*x2 + x3
+        bx = 3*x0 - 6*x1 + 3*x2
+        cx = -3*x0 + 3*x1
+        dx = x0
+        ay = -1*y0 + 3*y1 - 3*y2 + y3
+        by = 3*y0 - 6*y1 + 3*y2
+        cy = -3*y0 + 3*y1
+        dy = y0
+        pass
+    if curve_type == 'hermite':
+        pass
 
 def draw_lines( matrix, screen, color ):
     if len(matrix) < 2:
