@@ -26,9 +26,34 @@ def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
         by = 3*y0 - 6*y1 + 3*y2
         cy = -3*y0 + 3*y1
         dy = y0
-        pass
+
+        add_point(points, x0, y0)
+        t = step
+        while t <= 1:
+            x = dx + t*(cx + t*(bx + t*ax))
+            y = dy + t*(cy + t*(by + t*ay))
+            add_point(points, x, y)
+            add_point(points, x, y)
+            t += step
+        add_point(points, x3, y3)
     if curve_type == 'hermite':
-        pass
+        ax = 2*x0 - 2*x1 + x2 + x3
+        bx = -3*x0 + 3*x1 - 2*x2 - x3
+        cx = x2
+        dx = x0
+        ay = 2*y0 - 2*y1 + y2 + y3
+        by = -3*y0 + 3*y1 - 2*y2 - y3
+        cy = y2
+        dy = y0
+        add_point(points, x0, y0)
+        t = step
+        while t <= 1:
+            x = dx + t*(cx + t*(bx + t*ax))
+            y = dy + t*(cy + t*(by + t*ay))
+            add_point(points, x, y)
+            add_point(points, x, y)
+            t += step
+        add_point(points, x1, y1)
 
 def draw_lines( matrix, screen, color ):
     if len(matrix) < 2:
