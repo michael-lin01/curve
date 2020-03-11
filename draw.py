@@ -76,8 +76,9 @@ def add_edge( matrix, x0, y0, z0, x1, y1, z1 ):
 def add_point( matrix, x, y, z=0 ):
     matrix.append( [x, y, z, 1] )
     
-
-
+def reflect(matrix):
+    for point in matrix:
+        point[0] = 500-point[0]
 
 def draw_line( x0, y0, x1, y1, screen, color ):
 
